@@ -18,6 +18,7 @@ kotlin {
         }
     }
 }
+
 tasks {
     fun buildCount(key: String) = System.getenv("BUILD_COUNT_SERVER").takeIf { it != null }?.apply {
         try
@@ -34,7 +35,7 @@ tasks {
     val buildcount = register("buildCount") {
         buildCount("gbuilder")
     }.get()
-    getByName("build") {
-        dependsOn(buildcount)
-    }
+//    getByName("build") {
+//        dependsOn(buildcount)
+//    }
 }
