@@ -17,6 +17,13 @@ kotlin {
             }
         }
     }
+    mingwX64 {
+        binaries {
+            executable("gbuilder") {
+                entryPoint = "com.geno1024.builder.main"
+            }
+        }
+    }
 }
 
 tasks {
@@ -32,10 +39,7 @@ tasks {
         }
     } ?: File("$projectDir/build_$key.txt").writeText("LOCAL")
 
-    val buildcount = register("buildCount") {
+    register("buildCount") {
         buildCount("gbuilder")
     }.get()
-//    getByName("build") {
-//        dependsOn(buildcount)
-//    }
 }
