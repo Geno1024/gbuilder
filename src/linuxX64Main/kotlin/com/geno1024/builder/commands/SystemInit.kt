@@ -1,7 +1,11 @@
 package com.geno1024.builder.commands
 
 import com.geno1024.builder.Command
-import platform.posix.getpwnam
+import kotlinx.cinterop.alloc
+import kotlinx.cinterop.cstr
+import kotlinx.cinterop.memScoped
+import kotlinx.cinterop.placeTo
+import platform.posix.*
 
 object SystemInit: Command
 {
@@ -12,6 +16,16 @@ object SystemInit: Command
 
     private fun adduser(username: String, home: String = "/home/$username")
     {
+        memScoped {
+            val pwd = alloc<passwd>()
+            pwd.pw_name = username.cstr.placeTo(this)
+            pwd.pw_dir = home.cstr.placeTo(this)
+            pwd.pw_shell = strdup("/bin/bash")
+            pwd.pw_gecos = username.cstr.placeTo(this)
+            val f = fopen("/etc/passwd", "a")
+            
+            free(pwd.pw_shell)
+        }
 //        val pwd =
     }
 
