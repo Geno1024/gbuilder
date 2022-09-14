@@ -25,11 +25,16 @@ kotlin {
         }
     }
     jvm {
-
     }
     sourceSets {
         val linuxX64Main by getting
         val mingwX64Main by getting
+        @Suppress("UNUSED_VARIABLE") val jvmMain by getting {
+            dependencies {
+                implementation(kotlin("reflect"))
+                implementation("com.alibaba.fastjson2:fastjson2:2.0.13")
+            }
+        }
         @Suppress("UNUSED_VARIABLE") val gitServerCommonMain by creating {
             linuxX64Main.dependsOn(this)
             mingwX64Main.dependsOn(this)
