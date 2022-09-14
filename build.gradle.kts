@@ -24,6 +24,17 @@ kotlin {
             }
         }
     }
+    jvm {
+
+    }
+    sourceSets {
+        val linuxX64Main by getting
+        val mingwX64Main by getting
+        @Suppress("UNUSED_VARIABLE") val gitServerCommonMain by creating {
+            linuxX64Main.dependsOn(this)
+            mingwX64Main.dependsOn(this)
+        }
+    }
 }
 
 tasks {

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="gbuilder-jvm">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="gbuilder-jvm.jar">
+      <element id="module-output" name="gbuilder.jvmMain" />
+    </root>
+  </artifact>
+</component>

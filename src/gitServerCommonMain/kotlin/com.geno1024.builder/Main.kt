@@ -1,16 +1,14 @@
 package com.geno1024.builder
 
-import com.geno1024.builder.commands.SystemInit
 import kotlin.system.exitProcess
 
 object Main
 {
-    fun parser(commands: List<String>)
+    private fun parser(commands: List<String>)
     {
         when (commands[0])
         {
             "exit", "quit", "return" -> exitProcess(0)
-            "systeminit" -> SystemInit(commands.drop(1))
         }
     }
 
