@@ -1,6 +1,7 @@
 package com.geno1024.builder.web
 
 import com.geno1024.builder.web.apis.Repo
+import com.geno1024.builder.web.apis.Users
 
 object Constants
 {
@@ -13,6 +14,7 @@ object Constants
     val repoLocation = "/home/geno1024/repositories"
 
     val apiList = listOf(
-        Repo::class
+        Repo::class,
+        Users::class
     )
 }

@@ -3,10 +3,11 @@ package com.geno1024.builder.web.apis
 import com.geno1024.builder.web.AnAPI
 import com.geno1024.builder.web.Constants
 import com.geno1024.builder.web.structures.ErrorMessage
+import java.io.File
 import java.net.HttpURLConnection
 
-class Repo : AnAPI(
-    urlPrefix = "/api/repo",
+class Users : AnAPI(
+    urlPrefix = "/api/users",
     handler = {
         val method = requestMethod
         val url = requestURI.path
@@ -23,12 +24,16 @@ class Repo : AnAPI(
             close()
         }
 
-        if (url.substringAfter("/api/repo/").count { it == '/' } < 1)
+        if (url.substringAfter("/api/users").count { it == '/' } < 1)
         {
-            sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0)
-            responseBody.write(ErrorMessage("Parameter missing: repo", "Specify repo in URL with this format: /api/repo/[owner]/[repo].").toJSONBytes())
+            sendResponseHeaders(HttpURLConnection.HTTP_OK, 0)
+            responseBody.write(
+            File(Constants.repoLocation).listFiles().toList().toString().toByteArray(Constants.charset)
+            )
+//            responseBody.write(ErrorMessage("Parameter missing: repo", "Specify repo in URL with this format: /api/repo/[owner]/[repo].").toJSONBytes())
             close()
         }
-        val (owner, repo) = url.substringAfter("/api/repo/").split("/", limit = 2)
     }
 )
+{
+}
