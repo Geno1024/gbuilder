@@ -12,19 +12,20 @@ repositories {
 kotlin {
     linuxX64 {
         binaries {
-            executable("gbuilder") {
-                entryPoint = "com.geno1024.builder.main"
+            sharedLib("gitrepo") {
+
             }
         }
     }
     mingwX64 {
         binaries {
-            executable("gbuilder") {
-                entryPoint = "com.geno1024.builder.main"
+            sharedLib("gitrepo") {
+
             }
         }
     }
     jvm {
+
     }
     sourceSets {
         val linuxX64Main by getting
@@ -32,10 +33,9 @@ kotlin {
         @Suppress("UNUSED_VARIABLE") val jvmMain by getting {
             dependencies {
                 implementation(kotlin("reflect"))
-                implementation("com.alibaba.fastjson2:fastjson2:2.0.13")
             }
         }
-        @Suppress("UNUSED_VARIABLE") val gitServerCommonMain by creating {
+        @Suppress("UNUSED_VARIABLE") val nativeCommonMain by creating {
             linuxX64Main.dependsOn(this)
             mingwX64Main.dependsOn(this)
         }
@@ -55,7 +55,7 @@ tasks {
         }
     } ?: File("$projectDir/build_$key.txt").writeText("LOCAL")
 
-    register("buildCount") {
-        buildCount("gbuilder")
+    register("buildCount-GitRepoAPI") {
+        buildCount("GitRepoAPI")
     }.get()
 }

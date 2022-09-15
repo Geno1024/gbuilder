@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GitRepoAPI-jvm">
+    <output-path>$PROJECT_DIR$/GitRepoAPI/build/libs</output-path>
+    <root id="archive" name="GitRepoAPI-jvm.jar">
+      <element id="module-output" name="GBuilder.GitRepoAPI.jvmMain" />
+    </root>
+  </artifact>
+</component>
