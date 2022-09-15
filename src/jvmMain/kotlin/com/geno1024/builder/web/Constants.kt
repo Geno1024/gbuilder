@@ -7,4 +7,6 @@ object Constants
     val port = 8080
 
     val charset = Charsets.UTF_8
+
+    val repoLocation = "/home/geno1024/repositories"
 }

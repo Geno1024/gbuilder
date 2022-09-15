@@ -23,6 +23,16 @@ class Repo : AnAPI(
             close()
         }
 
-        println(url.substringAfter("/api/repo"))
+        if (url.substringAfter("/api/repo/").count { it == '/' } < 1)
+        {
+            sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0)
+            responseBody.write(JSONObject.toJSONString(Error("Parameter missing: repo", "Specify repo in URL with this format: /api/repo/[owner]/[repo].")).toByteArray(Constants.charset))
+            close()
+        }
+        val (owner, repo) = url.substringAfter("/api/repo/").split("/", limit = 2)
+
+        owner
+
+//        println(url.substringAfter("/api/repo"))
     }
 )
