@@ -33,6 +33,7 @@ kotlin {
         @Suppress("UNUSED_VARIABLE") val jvmMain by getting {
             dependencies {
                 implementation(kotlin("reflect"))
+                implementation("com.alibaba.fastjson2:fastjson2:2.0.13")
             }
         }
         @Suppress("UNUSED_VARIABLE") val nativeCommonMain by creating {
