@@ -1,0 +1,4 @@
+headers.linux = git2.h
+headerFilter.linux = git2/*
+compilerOpts.linux = -I/usr/include
+linkerOpts.linux = -L/usr/lib -lgit2
