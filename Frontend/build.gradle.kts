@@ -14,21 +14,21 @@ kotlin {
         compilations {
             getByName("main") {
                 cinterops {
-//                    @Suppress("UNUSED_VARIABLE") val libgit2 by creating {
-//                        packageName = "native.git2"
-//                    }
+                    @Suppress("UNUSED_VARIABLE") val libgit2 by creating {
+                        packageName = "native.git2"
+                    }
                 }
             }
         }
         binaries {
-            executable("gbuilderserver") {
+            sharedLib("gitrepo") {
 
             }
         }
     }
     mingwX64 {
         binaries {
-            sharedLib("gbuilderserver") {
+            sharedLib("gitrepo") {
 
             }
         }
@@ -64,7 +64,7 @@ tasks {
         }
     } ?: File("$projectDir/build_$key.txt").writeText("LOCAL")
 
-    register("buildCount-ServerAPI") {
-        buildCount("GBuilder-ServerAPI")
+    register("buildCount-Frontend") {
+        buildCount("GBuilder-Frontend")
     }.get()
 }

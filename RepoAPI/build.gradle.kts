@@ -65,6 +65,6 @@ tasks {
     } ?: File("$projectDir/build_$key.txt").writeText("LOCAL")
 
     register("buildCount-RepoAPI") {
-        buildCount("RepoAPI")
+        buildCount("GBuilder-RepoAPI")
     }.get()
 }
