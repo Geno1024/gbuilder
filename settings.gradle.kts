@@ -1,4 +1,5 @@
 rootProject.name = "GBuilder"
 
-include(":GitRepoAPI")
-include(":GitWebAPI")
+include(":RepoAPI")
+include(":ServerAPI")
+include(":WebAPI")

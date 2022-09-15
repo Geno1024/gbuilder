@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RepoAPI-jvm">
+    <output-path>$PROJECT_DIR$/RepoAPI/build/libs</output-path>
+    <root id="archive" name="RepoAPI-jvm.jar">
+      <element id="module-output" name="GBuilder.RepoAPI.jvmMain" />
+    </root>
+  </artifact>
+</component>

@@ -12,8 +12,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/GitRepoAPI" />
-            <option value="$PROJECT_DIR$/GitWebAPI" />
+            <option value="$PROJECT_DIR$/RepoAPI" />
+            <option value="$PROJECT_DIR$/ServerAPI" />
+            <option value="$PROJECT_DIR$/WebAPI" />
           </set>
         </option>
       </GradleProjectSettings>

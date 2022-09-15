@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WebAPI-jvm">
+    <output-path>$PROJECT_DIR$/WebAPI/build/libs</output-path>
+    <root id="archive" name="WebAPI-jvm.jar">
+      <element id="module-output" name="GBuilder.WebAPI.jvmMain" />
+    </root>
+  </artifact>
+</component>

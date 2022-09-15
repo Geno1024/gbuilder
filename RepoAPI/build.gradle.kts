@@ -64,7 +64,7 @@ tasks {
         }
     } ?: File("$projectDir/build_$key.txt").writeText("LOCAL")
 
-    register("buildCount-GitRepoAPI") {
-        buildCount("GitRepoAPI")
+    register("buildCount-RepoAPI") {
+        buildCount("RepoAPI")
     }.get()
 }
