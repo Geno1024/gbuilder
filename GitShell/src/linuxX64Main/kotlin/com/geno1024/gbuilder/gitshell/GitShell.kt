@@ -1,41 +1,44 @@
 package com.geno1024.gbuilder.gitshell
 
-import com.geno1024.gbuilder.gitshell.subcommands.Help
-import com.geno1024.gbuilder.gitshell.subcommands.Init
+import com.geno1024.gbuilder.gitshell.subcommands.Create
 import kotlin.system.exitProcess
 
 object GitShell
 {
-    fun commandParser(input: List<String>)
+    fun parse(input: List<String>)
     {
         when (input[0])
         {
-            "exit", "quit" -> exitProcess(0)
-            "help" -> Help(input.drop(1))
-            "init" -> Init(input.drop(1))
-//            "whoami" ->
+            "create" -> Create(input.drop(1))
+            "quit", "exit" -> exitProcess(0)
         }
     }
 
-    fun main()
+    operator fun invoke()
     {
+        println("Hello ${user.username}!")
+        println("Here's Geno's GBuilder Git Server.")
         while (true)
         {
             print("GitShell > ")
             try
             {
                 val input = readln().split(" ")
-                commandParser(input)
+                parse(input)
             }
-            catch (e: Exception)
+            catch (e: RuntimeException)
             {
+                println(e)
+                println("Good bye!")
                 exitProcess(0)
             }
         }
     }
 }
 
-fun main(args: Array<String>) = if (args.isEmpty())
-    GitShell.main()
-else
-    GitShell.commandParser(args.toList().apply(::println))
+
+fun main(args: Array<String>)
+{
+    user = User(args.getOrElse(0) { "anonymous" } )
+    GitShell()
+}
