@@ -22,8 +22,15 @@ object GitShell
         while (true)
         {
             print("GitShell > ")
-            val input = readln().split(" ")
-            commandParser(input)
+            try
+            {
+                val input = readln().split(" ")
+                commandParser(input)
+            }
+            catch (e: Exception)
+            {
+                exitProcess(0)
+            }
         }
     }
 }
@@ -31,4 +38,4 @@ object GitShell
 fun main(args: Array<String>) = if (args.isEmpty())
     GitShell.main()
 else
-    GitShell.commandParser(args.toList())
+    GitShell.commandParser(args.toList().apply(::println))
