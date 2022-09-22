@@ -14,15 +14,15 @@ kotlin {
         compilations {
             getByName("main") {
                 cinterops {
-                    @Suppress("UNUSED_VARIABLE") val libgit2 by creating {
-                        packageName = "native.git2"
-                    }
+//                    @Suppress("UNUSED_VARIABLE") val libgit2 by creating {
+//                        packageName = "native.git2"
+//                    }
                 }
             }
         }
         binaries {
             executable("gbuilder-BuilderServer") {
-
+                entryPoint = "com.geno1024.gbuilder.builderserver.main"
             }
         }
     }

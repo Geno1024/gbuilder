@@ -4,7 +4,7 @@ object Builder
 {
     fun main(args: Array<String>)
     {
-
+        EnvironmentManager.initUbuntu("22.04")
     }
 }
 
