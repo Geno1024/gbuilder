@@ -12,8 +12,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/BuilderServer" />
-            <option value="$PROJECT_DIR$/GitShell" />
+            <option value="$PROJECT_DIR$/init" />
+            <option value="$PROJECT_DIR$/run" />
+            <option value="$PROJECT_DIR$/shell" />
+            <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>
       </GradleProjectSettings>

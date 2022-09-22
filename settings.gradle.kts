@@ -1,8 +1,6 @@
 rootProject.name = "GBuilder"
 
-include(":BuilderServer")
-include(":GitShell")
-//include(":Frontend")
-//include(":RepoAPI")
-//include(":ServerAPI")
-//include(":WebAPI")
+include(":utils")
+include(":shell")
+include(":init")
+include(":run")
