@@ -1,9 +1,6 @@
 package com.geno1024.gbuilder.utils
 
-import kotlinx.cinterop.ByteVar
-import kotlinx.cinterop.allocArray
-import kotlinx.cinterop.memScoped
-import kotlinx.cinterop.toKStringFromUtf8
+import kotlinx.cinterop.*
 import platform.posix.*
 
 object FileUtils
@@ -26,5 +23,12 @@ object FileUtils
             readlink("/proc/self/exe", this, PATH_MAX)
             toKStringFromUtf8()
         }
+    }
+
+    fun makeTemp(prefix: String) = memScoped {
+        val tempName = "$prefix-XXXXXX"
+        val tempDir = allocArray<ByteVar>(tempName.length) { value = tempName[it].code.toByte() }
+        mkdtemp(tempDir)
+        tempDir.toKStringFromUtf8()
     }
 }
