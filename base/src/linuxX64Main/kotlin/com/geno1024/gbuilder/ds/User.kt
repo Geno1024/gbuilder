@@ -30,8 +30,8 @@ data class User(
     )
 
     val userDir: String = "${GlobalConfig().repositoryHome}/user-$id"
-    val pubKey: String = "$userDir/$pubKeyLocation"
-    val config: String = "$userDir/$userConfigLocation"
+    val pubKeyLocation: String = "$userDir/${User.pubKeyLocation}"
+    val configLocation: String = "$userDir/$userConfigLocation"
 
     companion object
     {
@@ -43,7 +43,16 @@ data class User(
                 .toMap()
         )
 
-        fun currentMaxId() = FileUtils.readFile("${GlobalConfig().root}/sequence-id").toLong()
+        fun currentMaxId() =
+            try
+            {
+                FileUtils.readFile("${GlobalConfig().repositoryHome}/sequence-id").toLong()
+            }
+            catch (e: Exception)
+            {
+                FileUtils.writeFile("${GlobalConfig().repositoryHome}/sequence-id", "1")
+                1
+            }
     }
 
     override fun toString(): String = mapOf(

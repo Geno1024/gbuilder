@@ -15,7 +15,9 @@ object FileUtils
         memScoped {
             val buffer = allocArray<ByteVar>(bufferSize)
             while (fgets(buffer, bufferSize, file) != null)
+            {
                 content += buffer.toKString()
+            }
             fclose(file)
         }
         return content

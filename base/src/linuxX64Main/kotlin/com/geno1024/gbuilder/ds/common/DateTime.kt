@@ -1,6 +1,6 @@
 package com.geno1024.gbuilder.ds.common
 
-class DateTime(val millisSinceEpoch: Long)
+class DateTime(val timestamp: Long)
 {
-    override fun toString(): String = millisSinceEpoch.toString()
+    override fun toString(): String = timestamp.toString()
 }
