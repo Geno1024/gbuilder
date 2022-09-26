@@ -1,34 +1,29 @@
 package com.geno1024.gbuilder.utils
 
-import kotlinx.cinterop.*
+import kotlinx.cinterop.ByteVar
+import kotlinx.cinterop.allocArray
+import kotlinx.cinterop.memScoped
+import kotlinx.cinterop.toKString
 import platform.posix.*
 
 object FileUtils
 {
-    fun readFileContents(path: String): String
+    fun readFile(path: String, bufferSize: Int = 4096): String
     {
         var content = ""
         val file = fopen(path, "r") ?: return ""
         memScoped {
-            val buffer = allocArray<ByteVar>(1024)
-            while (fgets(buffer, 1024, file) != null)
-                content += buffer.toKStringFromUtf8()
+            val buffer = allocArray<ByteVar>(bufferSize)
+            while (fgets(buffer, bufferSize, file) != null)
+                content += buffer.toKString()
             fclose(file)
         }
         return content
     }
 
-    fun getExecutableLocation(): String = memScoped {
-        with (allocArray<ByteVar>(PATH_MAX)) {
-            readlink("/proc/self/exe", this, PATH_MAX)
-            toKStringFromUtf8()
-        }
-    }
-
-    fun makeTemp(prefix: String) = memScoped {
-        val tempName = "$prefix-XXXXXX"
-        val tempDir = allocArray<ByteVar>(tempName.length) { value = tempName[it].code.toByte() }
-        mkdtemp(tempDir)
-        tempDir.toKStringFromUtf8()
+    fun writeFile(path: String, content: String)
+    {
+        val file = fopen(path, "w")
+        fputs(content, file)
     }
 }
