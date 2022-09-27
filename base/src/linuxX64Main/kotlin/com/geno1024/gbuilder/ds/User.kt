@@ -3,6 +3,7 @@ package com.geno1024.gbuilder.ds
 import com.geno1024.gbuilder.ds.common.DateTime
 import com.geno1024.gbuilder.utils.FileUtils
 import com.geno1024.gbuilder.utils.StringUtils.toMap
+import com.geno1024.gbuilder.utils.TimeUtils
 
 data class User(
     val id: Long,
@@ -13,8 +14,8 @@ data class User(
     var location: String = "",
     var motd: String = "",
 
-    val createdAt: DateTime = DateTime(0),
-    var updatedAt: DateTime = DateTime(0)
+    val createdAt: DateTime = DateTime(TimeUtils.getCurrentTime()),
+    var updatedAt: DateTime = DateTime(TimeUtils.getCurrentTime())
 )
 {
     constructor(map: Map<String, String>) : this(
