@@ -27,5 +27,6 @@ object FileUtils
     {
         val file = fopen(path, "w")
         fputs(content, file)
+        fflush(file)
     }
 }

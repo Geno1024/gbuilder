@@ -32,8 +32,8 @@ object UserOpTest
     fun retrieve()
     {
         val user = UserOp.getUser(id)
-        assertEquals(nickname, user.nickname)
         assertEquals(pubKey, FileUtils.readFile(user.pubKeyLocation))
+        assertEquals(nickname, user.nickname)
         assertEquals(email, user.email)
     }
 
